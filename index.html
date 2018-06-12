@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>堂食-点菜</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="myApp" ng-controller="ctrl">
+    <header>
+       <p class="head-left"><i class="iconfont icon-fanhui"></i>返回</p>
+        <p class="head-right"><i class="iconfont icon-ttpodicon f20"></i></p>
+        <h2>堂食-点菜</h2>
+    </header>
+
+    <section>
+        <tab-content class="tab-content">
+            <tab-slide ng-repeat="foodData in data" title="foodData.title" index="$index" class="tab-slide">
+                <ul class="foodList">
+                    <li ng-repeat="item in foodData.food">
+                        <div>
+                            <p>{{item.name}}</p>
+                            <p class="price">{{item.price}}</p>
+                        </div>
+                        <label ng-class="{true:'bg2',false:'bg1'}[gets]" >
+                            <span ng-click="gets=!gets"><i class="iconfont icon-duihao bas"></i></span>
+                            <input type="checkbox" ng-model="item.ischecked" ng-click="ischecked()">
+                        </label>
+                    </li>
+                </ul>
+              </tab-slide>
+        </tab-content>
+    </section>
+
+    <footer>
+        <h2>购物车{{num}}</h2>
+    </footer>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/directive.js"></script>
+</body>
+</html>
